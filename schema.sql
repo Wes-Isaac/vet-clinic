@@ -11,13 +11,13 @@ CREATE TABLE animals (
 ALTER TABLE animals ADD COLUMN species VARCHAR(250);
 
 CREATE TABLE owners(
-   id SERIAL PRIMARY KEY,
+   id SERIAL PRIMARY KEY NOT NULL,
    full_name VARCHAR(255),
    age INT
 );
 
 CREATE TABLE species(
-   id SERIAL PRIMARY KEY,
+   id SERIAL PRIMARY KEY NOT NULL,
    name VARCHAR(255)
    );
 

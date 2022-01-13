@@ -36,18 +36,16 @@ CREATE TABLE vets(
    );
 
 CREATE TABLE specializations (
-   species_id INT,
-   vets_id INT,
-   FOREIGN KEY(species_id) REFERENCES species(id),
-   FOREIGN KEY(vets_id) REFERENCES vets(id),
-   UNIQUE(species_id,vets_id)
+   species_id int,
+    vets_id int,
+    CONSTRAINT fk_species FOREIGN KEY(species_id) REFERENCES species(id),
+    CONSTRAINT fk_vets FOREIGN KEY(vets_id) REFERENCES vets(id)
    );
 
 CREATE TABLE visits (
-   animals_id INT,
-   vets_id INT,
-   date_of_visit timestamp,
-   FOREIGN KEY(animals_id) REFERENCES species(id),
-   FOREIGN KEY(vets_id) REFERENCES vets(id),
-   UNIQUE(animals_id,vets_id)
+    animals_id int,
+    vets_id int,
+    date_of_visit date,
+    CONSTRAINT fk_animals FOREIGN KEY(animals_id) REFERENCES animals(id),
+    CONSTRAINT fk_vets FOREIGN KEY(vets_id) REFERENCES vets(id)
    ); 

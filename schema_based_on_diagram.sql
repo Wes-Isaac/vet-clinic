@@ -39,3 +39,13 @@ CREATE TABLE invoice_items(
     invoice_id INTEGER NOT NULL,
     treatment_id INTEGER NOT NULL
 );
+
+ALTER TABLE invoice_items
+ADD CONSTRAINT invoice_items_invoice_id_foreign
+FOREIGN KEY(invoice_id)
+REFERENCES invoices(id);
+
+ALTER TABLE invoice_items
+ADD CONSTRAINT invoice_items_treatment_id_foreign
+FOREIGN KEY(treatment_id)
+REFERENCES treatments(id);

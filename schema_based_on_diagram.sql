@@ -10,16 +10,16 @@ CREATE TABLE medical_histories (
    status VARCHAR(220),
    CONSTRAINT fk_patient FOREIGN KEY(patient_id) REFERENCES patients(id)  
 );
-CREATE TABLE treaments (
+CREATE TABLE treatment (
     id SERIAL PRIMARY KEY,
     type VARCHAR(220),
     name VARCHAR(220)
 );
-CREATE TABLE medical_histories_treaments (
+CREATE TABLE medical_histories_treatments (
     medical_history_id int,
-    treament_id int,
+    treatment_id int,
     CONSTRAINT fk_medical_history FOREIGN KEY(medical_history_id) REFERENCES medical_histories(id),
-    CONSTRAINT fk_treament FOREIGN KEY(treament_id) REFERENCES treaments(id)
+    CONSTRAINT fk_treatment FOREIGN KEY(treatment_id) REFERENCES treatments(id)
 );
 
 CREATE TABLE invoices (
@@ -49,3 +49,14 @@ ALTER TABLE invoice_items
 ADD CONSTRAINT invoice_items_treatment_id_foreign
 FOREIGN KEY(treatment_id)
 REFERENCES treatments(id);
+
+-- Foreign Key indexes
+CREATE INDEX ON medical_histories (patient_id);
+
+CREATE INDEX ON medical_histories_treatments (medical_history_id);
+CREATE INDEX ON medical_histories_treatments (treatment_id);
+
+CREATE INDEX ON invoices (medical_history_id);
+
+CREATE INDEX ON invoice_items (invoice_id);
+CREATE INDEX ON invoice_items (treatment_id);

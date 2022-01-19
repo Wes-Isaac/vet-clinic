@@ -10,3 +10,8 @@ CREATE TABLE medical_histories (
    status VARCHAR(220),
    CONSTRAINT fk_patient FOREIGN KEY(patient_id) REFERENCES patients(id)  
 );
+CREATE TABLE treaments (
+    id SERIAL PRIMARY KEY,
+    type VARCHAR(220),
+    name VARCHAR(220)
+);
